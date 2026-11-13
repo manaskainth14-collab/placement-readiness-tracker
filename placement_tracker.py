@@ -9,3 +9,19 @@ students = [
     {"name": "Rohan",  "roll_no": 105, "aptitude": 35, "verbal": 40, "coding": 28},
 ]
 
+# Task 1: add one more student through input()
+print("--- Add a new student ---")
+name = input("Enter name: ")
+roll_no = int(input("Enter roll number: "))        # convert str -> int
+
+new_student = {"name": name, "roll_no": roll_no}
+
+for subject in ["aptitude", "verbal", "coding"]:
+    while True:                                     # loop rejects invalid scores
+        score = int(input(f"Enter {subject} score (0-100): "))
+        if 0 <= score <= 100:
+            break
+        print("Invalid! Score must be between 0 and 100.")
+    new_student[subject] = score
+
+students.append(new_student)
