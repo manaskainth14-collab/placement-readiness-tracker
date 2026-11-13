@@ -25,3 +25,30 @@ for subject in ["aptitude", "verbal", "coding"]:
     new_student[subject] = score
 
 students.append(new_student)
+
+
+# Task 2: functions
+def average(student):
+    """Return the mean of the three scores."""
+    return (student["aptitude"] + student["verbal"] + student["coding"]) / 3
+
+
+def grade(avg):
+    """Return grade based on average."""
+    if avg >= 80:
+        return "A"
+    elif avg >= 60:
+        return "B"
+    elif avg >= 40:
+        return "C"
+    else:
+        return "Needs practice"
+    
+def top_scorer(students):
+    """Return the student with the highest average."""
+    return max(students, key=average)
+
+
+def needs_practice(students, limit=40):
+    """Return students whose average is below limit (default 40)."""
+    return [s for s in students if average(s) < limit]
