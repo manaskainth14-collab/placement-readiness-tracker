@@ -52,3 +52,20 @@ def top_scorer(students):
 def needs_practice(students, limit=40):
     """Return students whose average is below limit (default 40)."""
     return [s for s in students if average(s) < limit]
+
+# Task 2: formatted result table
+print("\n" + "=" * 64)
+print(f"{'Roll':<6}{'Name':<12}{'Apt':>5}{'Verb':>6}{'Code':>6}{'Avg':>8}   Grade")
+print("=" * 64)
+for s in students:
+    avg = average(s)
+    print(f"{s['roll_no']:<6}{s['name']:<12}{s['aptitude']:>5}{s['verbal']:>6}"
+          f"{s['coding']:>6}{avg:>8.2f}   {grade(avg)}")
+print("=" * 64)
+
+best = top_scorer(students)
+print(f"\nTop scorer: {best['name']} (average {average(best):.2f})")
+
+print("\nStudents needing extra practice:")
+for s in needs_practice(students):
+    print(f"  - {s['name']} (average {average(s):.2f})")
